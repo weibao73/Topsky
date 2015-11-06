@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FindaSVS.Service
+namespace FindaSVS.Service.Manager.Interfaces
 {
-    public class Class1
+    public interface IBaseManager<T> : IDisposable
     {
+        IQueryable<T> GetAll();
     }
 }

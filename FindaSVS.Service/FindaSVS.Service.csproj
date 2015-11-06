@@ -39,8 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Manager\BaseManager.cs" />
+    <Compile Include="Manager\Interfaces\IBaseManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FindaSVS.DataAccess\FindaSVS.DataAccess.csproj">
+      <Project>{ffd341cf-813d-450b-b13e-4cd4a8bdeda8}</Project>
+      <Name>FindaSVS.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindaSVS.Data\FindaSVS.Data.csproj">
+      <Project>{937024c8-4d59-4cdd-8ebe-b3ee1bf755d3}</Project>
+      <Name>FindaSVS.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

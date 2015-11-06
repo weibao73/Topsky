@@ -62,6 +62,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
     <Folder Include="Comparison" />
+    <Folder Include="dbo\Data Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql" />
@@ -71,5 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Comparison\Local.scmp" />
+    <None Include="dbo\Data Scripts\LoadNewUsers.sql" />
   </ItemGroup>
 </Project>

@@ -50,8 +50,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FindaSVS.DataAccess\FindaSVS.DataAccess.csproj">
+      <Project>{ffd341cf-813d-450b-b13e-4cd4a8bdeda8}</Project>
+      <Name>FindaSVS.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindaSVS.Data\FindaSVS.Data.csproj">
+      <Project>{937024c8-4d59-4cdd-8ebe-b3ee1bf755d3}</Project>
+      <Name>FindaSVS.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
