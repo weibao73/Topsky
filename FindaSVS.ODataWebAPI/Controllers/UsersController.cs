@@ -6,20 +6,23 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.OData;
 
+using FindaSVS.Data.Entities;
 using FindaSVS.Service.Manager.Interfaces;
 using FindaSVS.Service.Manager;
 
 namespace FindaSVS.WebAPI.Controllers
 {
-    public class BaseController<T> : ODataController where T : class
+    public class UsersController : BaseController<User>
     {
-        protected IBaseManager<T> manager;
-
-        public BaseController() { }
-
-        public BaseController(IBaseManager<T> manager)
+        public UsersController(IBaseManager<User> manager)
+            : base(manager)
         {
-            this.manager = manager;
+        }
+
+        [EnableQuery]
+        public IQueryable<User> Get()
+        {
+            return this.manager.GetAll();
         }
     }
 }

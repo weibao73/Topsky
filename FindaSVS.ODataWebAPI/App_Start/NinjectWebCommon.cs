@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FindaSVS.WebAPI.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(FindaSVS.WebAPI.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FindaSVS.ODataWebAPI.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(FindaSVS.ODataWebAPI.App_Start.NinjectWebCommon), "Stop")]
 
-namespace FindaSVS.WebAPI.App_Start
+namespace FindaSVS.ODataWebAPI.App_Start
 {
     using System;
     using System.Web;
@@ -69,7 +69,8 @@ namespace FindaSVS.WebAPI.App_Start
         {
             kernel.Bind<FindaSVSDbContext>().ToSelf().InRequestScope();
             kernel.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>)).InRequestScope();
-            kernel.Bind<IUserManager>().To<UserManager>().InRequestScope();
+            kernel.Bind(typeof(IBaseManager<>)).To(typeof(BaseManager<>)).InRequestScope();
+            //kernel.Bind<IUserManager>().To<UserManager>().InRequestScope();
         }        
     }
 }

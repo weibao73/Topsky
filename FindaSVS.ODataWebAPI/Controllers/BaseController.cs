@@ -15,8 +15,6 @@ namespace FindaSVS.WebAPI.Controllers
     {
         protected IBaseManager<T> manager;
 
-        public BaseController() { }
-
         public BaseController(IBaseManager<T> manager)
         {
             this.manager = manager;
