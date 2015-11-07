@@ -70,7 +70,7 @@ namespace FindaSVS.ODataWebAPI.App_Start
             kernel.Bind<FindaSVSDbContext>().ToSelf().InRequestScope();
             kernel.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>)).InRequestScope();
             kernel.Bind(typeof(IBaseManager<>)).To(typeof(BaseManager<>)).InRequestScope();
-            //kernel.Bind<IUserManager>().To<UserManager>().InRequestScope();
+            kernel.Bind<IUserManager>().To<UserManager>().InRequestScope();
         }        
     }
 }

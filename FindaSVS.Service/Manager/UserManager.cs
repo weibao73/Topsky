@@ -14,5 +14,9 @@ namespace FindaSVS.Service.Manager
 {
     public class UserManager : BaseManager<User>, IUserManager
     {
+        public override IQueryable<User> GetAll()
+        {
+            return this.repository.GetAll().Where(u => u.FirstName == "Tom1");
+        }
     }
 }

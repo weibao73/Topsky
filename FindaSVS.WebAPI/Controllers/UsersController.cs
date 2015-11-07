@@ -19,6 +19,11 @@ namespace FindaSVS.WebAPI.Controllers
         {
         }
 
+        //public UsersController(IUserManager manager)
+        //    : base(manager)
+        //{
+        //}
+
         [EnableQuery]
         public IQueryable<User> Get()
         {

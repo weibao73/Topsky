@@ -25,7 +25,7 @@ namespace FindaSVS.Service.Manager
             this.repository = repository;
         }
 
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return this.repository.GetAll();
         }

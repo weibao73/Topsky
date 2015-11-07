@@ -10,5 +10,6 @@ namespace FindaSVS.Service.Manager.Interfaces
 {
     public interface IUserManager : IBaseManager<User>
     {
+
     }
 }
