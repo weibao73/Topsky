@@ -14,11 +14,9 @@ namespace FindaSVS.WebAPI.Controllers
 {
     public class UsersController : BaseController<User>
     {
-        public UsersController() : base() { }
-
-        public UsersController(IUserManager manager)
+        public UsersController(IBaseManager<User> manager)
             : base(manager)
-        {            
+        {
         }
 
         [EnableQuery]
