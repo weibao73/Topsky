@@ -12,20 +12,12 @@ namespace FindaSVS.Data.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class City
     {
-        public User()
-        {
-            this.Customers = new HashSet<Customer>();
-            this.Providers = new HashSet<Provider>();
-        }
+        public int CityId { get; set; }
+        public int ProvinceStateId { get; set; }
+        public string Name { get; set; }
     
-        public int UserId { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public Nullable<System.DateTime> RegisterDateTime { get; set; }
-    
-        public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<Provider> Providers { get; set; }
+        public virtual ProvinceState ProvinceState { get; set; }
     }
 }

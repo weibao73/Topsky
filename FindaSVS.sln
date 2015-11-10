@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.Data", "FindaSVS.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.UnitTest", "FindaSVS.UnitTest\FindaSVS.UnitTest.csproj", "{FC544F91-5995-4255-9AEB-E68CEAB63314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.Data.EntityDataModel", "FindaSVS.Data.EntityDataModel\FindaSVS.Data.EntityDataModel.csproj", "{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.Web", "FindaSVS.Web\FindaSVS.Web.csproj", "{F381D684-5187-47DA-AECE-E7B0835E0BE6}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FindaSVS.Database", "FindaSVS.Database\FindaSVS.Database.sqlproj", "{FB5409DE-8D43-4647-A715-312ED6886134}"
@@ -18,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.DataAccess", "FindaSVS.DataAccess\FindaSVS.DataAccess.csproj", "{FFD341CF-813D-450B-B13E-4CD4A8BDEDA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.WebAPI", "FindaSVS.WebAPI\FindaSVS.WebAPI.csproj", "{92A2859D-0792-4CB6-812D-AF13A320BFA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaSVS.Data.EntityDataModel", "FindaSVS.Data.EntityDataModel\FindaSVS.Data.EntityDataModel.csproj", "{AF6EBC81-E661-486A-83A5-2CCD1533B612}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{FC544F91-5995-4255-9AEB-E68CEAB63314}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC544F91-5995-4255-9AEB-E68CEAB63314}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC544F91-5995-4255-9AEB-E68CEAB63314}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F381D684-5187-47DA-AECE-E7B0835E0BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F381D684-5187-47DA-AECE-E7B0835E0BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F381D684-5187-47DA-AECE-E7B0835E0BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,6 +55,10 @@ Global
 		{92A2859D-0792-4CB6-812D-AF13A320BFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92A2859D-0792-4CB6-812D-AF13A320BFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92A2859D-0792-4CB6-812D-AF13A320BFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6EBC81-E661-486A-83A5-2CCD1533B612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6EBC81-E661-486A-83A5-2CCD1533B612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6EBC81-E661-486A-83A5-2CCD1533B612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6EBC81-E661-486A-83A5-2CCD1533B612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4AC4DF8F-BB15-486E-8B50-E18EA17D1AB3}</ProjectGuid>
+    <ProjectGuid>{AF6EBC81-E661-486A-83A5-2CCD1533B612}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FindaSVS.Data.EntityDataModel</RootNamespace>
@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,83 +48,94 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs">
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindaSVSEntityModel.Context.cs">
+    <Compile Include="FindaSVSDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FindaSVSEntityModel.Context.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindaSVSEntityModel.cs">
+    <Compile Include="FindaSVSDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindaSVSEntityModel.Designer.cs">
+    <Compile Include="FindaSVSDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Job.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Message.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProviderService.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProvinceState.cs">
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Quote.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="QuoteMessage.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="QuoteRespons.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="QuoteUpload.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Schedule.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Service.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceCatalog.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+      <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="FindaSVSEntityModel.edmx">
+    <EntityDeploy Include="FindaSVSDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FindaSVSEntityModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FindaSVSDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FindaSVSEntityModel.Context.tt">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="FindaSVSDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>
-      <LastGenOutput>FindaSVSEntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>FindaSVSDataModel.edmx</DependentUpon>
+      <LastGenOutput>FindaSVSDataModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="FindaSVSEntityModel.edmx.diagram">
-      <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>
+    <None Include="FindaSVSDataModel.edmx.diagram">
+      <DependentUpon>FindaSVSDataModel.edmx</DependentUpon>
     </None>
-    <None Include="FindaSVSEntityModel.tt">
+    <None Include="FindaSVSDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>
-      <LastGenOutput>FindaSVSEntityModel.cs</LastGenOutput>
+      <DependentUpon>FindaSVSDataModel.edmx</DependentUpon>
+      <LastGenOutput>FindaSVSDataModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

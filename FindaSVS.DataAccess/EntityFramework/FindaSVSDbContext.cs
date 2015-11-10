@@ -25,6 +25,8 @@ namespace FindaSVS.DataAccess.EntityFramework
 
             //configuration
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new CustomerConfiguration());
+            modelBuilder.Configurations.Add(new ProviderConfiguration());
         }
     }
 }

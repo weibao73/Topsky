@@ -39,6 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\City.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Job.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Provider.cs" />
+    <Compile Include="Entities\ProviderService.cs" />
+    <Compile Include="Entities\ProvinceState.cs" />
+    <Compile Include="Entities\Quote.cs" />
+    <Compile Include="Entities\QuoteMessage.cs" />
+    <Compile Include="Entities\QuoteResponse.cs" />
+    <Compile Include="Entities\QuoteUpload.cs" />
+    <Compile Include="Entities\Schedule.cs" />
+    <Compile Include="Entities\Service.cs" />
+    <Compile Include="Entities\ServiceCatalog.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

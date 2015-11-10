@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27bca2ba7acb41d3b44ac48ac2c7cae8" Name="Diagram1">
+        <EntityTypeShape EntityType="FindaSVSModel.City" Width="1.5" PointX="10.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Country" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Customer" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Job" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Message" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Order" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Provider" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.ProviderService" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.ProvinceState" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.QuoteMessage" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.QuoteRespons" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Quote" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.QuoteUpload" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Schedule" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.ServiceCatalog" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.Service" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSVSModel.User" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="FindaSVSModel.FK__City__ProvinceSt__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK__ProvinceS__Count__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Customers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_QuoteMessages_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Quotes_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Jobs_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Jobs_Schedules" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Orders_Providers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Orders_QuoteResponses" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Providers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_QuoteMessages_Providers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_QuoteResponses_Providers" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_QuoteResponses_Quotes" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Quotes_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_QuoteUploads_Quotes" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_ServiceCatalogs_ServiceCatalogs" ManuallyRouted="false" />
+        <AssociationConnector Association="FindaSVSModel.FK_Services_ServiceCatalogs" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

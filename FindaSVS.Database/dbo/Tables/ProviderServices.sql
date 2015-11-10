@@ -10,6 +10,10 @@
     [HourlyRate]         DECIMAL (18, 2) NULL,
     [HomeVisitRate]      DECIMAL (18, 2) NULL,
     [Description]        NVARCHAR (200)  NULL,
-    CONSTRAINT [PK_ProviderServices] PRIMARY KEY CLUSTERED ([ProviderServiceId] ASC)
+    CONSTRAINT [PK_ProviderServices] PRIMARY KEY CLUSTERED ([ProviderServiceId] ASC),
+    CONSTRAINT [FK_ProviderServices_Providers] FOREIGN KEY ([ProviderId]) REFERENCES [dbo].[Providers] ([ProviderId]),
+    CONSTRAINT [FK_ProviderServices_Services] FOREIGN KEY ([ServiceId]) REFERENCES [dbo].[Services] ([ServiceId])
 );
+
+
 

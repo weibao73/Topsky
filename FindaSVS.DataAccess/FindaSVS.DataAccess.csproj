@@ -47,6 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\BaseRepository.cs" />
+    <Compile Include="EntityFramework\Configurations\ProviderConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\CustomerConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\QuoteUploadConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\QuoteResponseConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\QuoteMessageConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\QuoteConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\ServiceConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\ServiceCatalogConfiguration.cs" />
     <Compile Include="EntityFramework\Configurations\UserConfiguration.cs" />
     <Compile Include="EntityFramework\Dynamic.cs" />
     <Compile Include="EntityFramework\FindaSVSDbConfiguration.cs" />
