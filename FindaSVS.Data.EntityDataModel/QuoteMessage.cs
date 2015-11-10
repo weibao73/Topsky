@@ -12,8 +12,16 @@ namespace FindaSVS.Data.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class C__RefactorLog
+    public partial class QuoteMessage
     {
-        public System.Guid OperationKey { get; set; }
+        public int QuoteMessageId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
+        public Nullable<int> ProviderId { get; set; }
+        public Nullable<bool> IsInbound { get; set; }
+        public string MessageContent { get; set; }
+        public Nullable<System.DateTime> MessageDateTime { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Provider Provider { get; set; }
     }
 }

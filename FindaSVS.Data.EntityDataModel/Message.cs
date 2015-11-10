@@ -7,22 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.Entities
+namespace FindaSVS.Data.EntityDataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public class User
+    public partial class Message
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string Province { get; set; }
-        public string Country { get; set; }
+        public int MessageId { get; set; }
+        public Nullable<int> ParentId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
+        public Nullable<int> ProviderId { get; set; }
+        public string MessageContent { get; set; }
+        public Nullable<System.DateTime> MessageDateTime { get; set; }
     }
 }

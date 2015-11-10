@@ -7,22 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.Entities
+namespace FindaSVS.Data.EntityDataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public class User
+    public partial class Service
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string Province { get; set; }
-        public string Country { get; set; }
+        public Service()
+        {
+            this.Quotes = new HashSet<Quote>();
+        }
+    
+        public int ServiceId { get; set; }
+        public Nullable<int> ServiceCatalogId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    
+        public virtual ICollection<Quote> Quotes { get; set; }
+        public virtual ServiceCatalog ServiceCatalog { get; set; }
     }
 }

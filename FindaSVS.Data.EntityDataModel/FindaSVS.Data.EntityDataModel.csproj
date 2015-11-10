@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FindaSVSEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,17 +66,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderService.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quote.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteMessage.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteRespons.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteUpload.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCatalog.cs">
+      <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>FindaSVSEntityModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="FindaSVSEntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FindaSVSEntityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="FindaSVSEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FindaSVSEntityModel.edmx</DependentUpon>

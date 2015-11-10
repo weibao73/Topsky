@@ -7,22 +7,35 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.Entities
+namespace FindaSVS.Data.EntityDataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public class User
+    public partial class Customer
     {
+        public Customer()
+        {
+            this.Orders = new HashSet<Order>();
+            this.QuoteMessages = new HashSet<QuoteMessage>();
+            this.Quotes = new HashSet<Quote>();
+        }
+    
+        public int CustomerId { get; set; }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string HomePhoneNumber { get; set; }
+        public string CellPhoneNumber { get; set; }
         public string Address { get; set; }
-        public string PostalCode { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
         public string Country { get; set; }
+        public string PostalCode { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<QuoteMessage> QuoteMessages { get; set; }
+        public virtual ICollection<Quote> Quotes { get; set; }
     }
 }

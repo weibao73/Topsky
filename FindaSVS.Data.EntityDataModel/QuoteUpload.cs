@@ -7,22 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.Entities
+namespace FindaSVS.Data.EntityDataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public class User
+    public partial class QuoteUpload
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string Province { get; set; }
-        public string Country { get; set; }
+        public int QuoteUploadId { get; set; }
+        public int QuoteId { get; set; }
+        public string FilePath { get; set; }
+        public string Decription { get; set; }
+        public System.DateTime UploadDateTime { get; set; }
+    
+        public virtual Quote Quote { get; set; }
     }
 }

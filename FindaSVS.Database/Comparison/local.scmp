@@ -38,7 +38,7 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>BlockOnPossibleDataLoss</Name>
-        <Value>True</Value>
+        <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>BlockWhenDriftDetected</Name>
@@ -290,11 +290,11 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetDatabaseName</Name>
-        <Value>FindaSVS.Database</Value>
+        <Value>FindaSVS</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetConnectionString</Name>
-        <Value>Integrated Security=True;Pooling=False;Connect Timeout=30</Value>
+        <Value>Data Source=localhost\sql2012;Initial Catalog=FindaSVS;Integrated Security=True;Pooling=False;MultipleActiveResultSets=False;Application Name="Microsoft SQL Server Data Tools, Schema Compare"</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TreatVerificationErrorsAsWarnings</Name>

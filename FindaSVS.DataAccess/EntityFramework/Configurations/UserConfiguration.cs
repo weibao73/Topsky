@@ -15,7 +15,7 @@ namespace FindaSVS.DataAccess.EntityFramework.Configurations
         internal UserConfiguration()
             : base()
         {
-            this.ToTable("User");
+            this.ToTable("Users");
             this.HasKey(u => u.UserId);
             this.Property(u => u.UserId)
                 .IsRequired()

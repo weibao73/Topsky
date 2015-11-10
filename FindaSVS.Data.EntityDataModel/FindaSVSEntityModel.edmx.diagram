@@ -4,8 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="280cec15010842b9a234cd047c3705a7" Name="Diagram1">
-        <EntityTypeShape EntityType="FindaSVSModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="21fcaf109a174768981b8350a7325204" Name="Diagram1">
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Customer" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Job" Width="1.5" PointX="10.5" PointY="8.375" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Message" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Order" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Provider" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.ProviderService" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.QuoteMessage" Width="1.5" PointX="8.25" PointY="8.875" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.QuoteRespons" Width="1.5" PointX="10.5" PointY="13" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Quote" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.QuoteUpload" Width="1.5" PointX="7.5" PointY="13" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Schedule" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.ServiceCatalog" Width="1.5" PointX="0.75" PointY="14.875" />
+        <EntityTypeShape EntityType="FindaSV.Data.Entities.Service" Width="1.5" PointX="3" PointY="15" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Customers_Users" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Orders_Customers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_QuoteMessages_Customers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Quotes_Customers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Jobs_Orders" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Jobs_Schedules" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Orders_Providers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Orders_QuoteResponses" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Providers_Users" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_QuoteMessages_Providers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_QuoteResponses_Providers" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_QuoteResponses_Quotes" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Quotes_Services" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_QuoteUploads_Quotes" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_ServiceCatalogs_ServiceCatalogs" />
+        <AssociationConnector Association="FindaSV.Data.Entities.FK_Services_ServiceCatalogs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

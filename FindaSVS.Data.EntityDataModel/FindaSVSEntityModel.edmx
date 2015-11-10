@@ -4,34 +4,470 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FindaSVSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="User">
+    <Schema Namespace="FindaSV.Data.Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HomePhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="CellPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ScheduleId" Type="int" Nullable="false" />
+          <Property Name="IsReviewed" Type="bit" Nullable="false" />
+          <Property Name="IsFixedRate" Type="bit" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="bit" Nullable="false" />
+          <Property Name="ActualRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ActualHours" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PartsRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompletedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="MessageContent" Type="nvarchar" MaxLength="200" />
+          <Property Name="MessageDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteResponseId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="IsFixedRate" Type="bit" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="bit" Nullable="false" />
+          <Property Name="EstimatedRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EstimatedHours" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="OrderDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ScheduleDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OfficePhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderServices">
+          <Key>
+            <PropertyRef Name="ProviderServiceId" />
+          </Key>
+          <Property Name="ProviderServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="IsFixedRate" Type="bit" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="bit" Nullable="false" />
+          <Property Name="IsPartsNeeded" Type="bit" Nullable="false" />
+          <Property Name="IsHomeVisitAllowed" Type="bit" Nullable="false" />
+          <Property Name="FixedRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HourlyRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HomeVisitRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="QuoteMessages">
+          <Key>
+            <PropertyRef Name="QuoteMessageId" />
+          </Key>
+          <Property Name="QuoteMessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="IsInbound" Type="bit" />
+          <Property Name="MessageContent" Type="nvarchar" MaxLength="200" />
+          <Property Name="MessageDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuoteResponses">
+          <Key>
+            <PropertyRef Name="QuoteResponseId" />
+          </Key>
+          <Property Name="QuoteResponseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="IsFixedRate" Type="bit" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="bit" Nullable="false" />
+          <Property Name="FixedRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HourlyRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EstimatedRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EstimatedHours" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="RequestDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ResponseDateTime" Type="datetime" />
+          <Property Name="Decription" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quotes">
+          <Key>
+            <PropertyRef Name="QuoteId" />
+          </Key>
+          <Property Name="QuoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="QuoteDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="QuoteUploads">
+          <Key>
+            <PropertyRef Name="QuoteUploadId" />
+          </Key>
+          <Property Name="QuoteUploadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteId" Type="int" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Decription" Type="nvarchar" MaxLength="100" />
+          <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedules">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" />
+          <Property Name="Location" Type="nvarchar" MaxLength="200" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceCatalogs">
+          <Key>
+            <PropertyRef Name="ServiceCatalogId" />
+          </Key>
+          <Property Name="ServiceCatalogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceCatalogId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="200" />
-          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" />
-          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterDateTime" Type="datetime" />
         </EntityType>
-        <EntityContainer Name="FindaSVSModelStoreContainer">
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        <Association Name="FK_Customers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Schedules">
+          <End Role="Schedules" Type="Self.Schedules" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedules">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Providers">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_QuoteResponses">
+          <End Role="QuoteResponses" Type="Self.QuoteResponses" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteResponses">
+              <PropertyRef Name="QuoteResponseId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="QuoteResponseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Providers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Providers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteMessages_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="QuoteMessages" Type="Self.QuoteMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="QuoteMessages">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteMessages_Providers">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+          <End Role="QuoteMessages" Type="Self.QuoteMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="QuoteMessages">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteResponses_Providers">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+          <End Role="QuoteResponses" Type="Self.QuoteResponses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="QuoteResponses">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteResponses_Quotes">
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="1" />
+          <End Role="QuoteResponses" Type="Self.QuoteResponses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteId" />
+            </Principal>
+            <Dependent Role="QuoteResponses">
+              <PropertyRef Name="QuoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Quotes">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteUploads_Quotes">
+          <End Role="Quotes" Type="Self.Quotes" Multiplicity="1" />
+          <End Role="QuoteUploads" Type="Self.QuoteUploads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotes">
+              <PropertyRef Name="QuoteId" />
+            </Principal>
+            <Dependent Role="QuoteUploads">
+              <PropertyRef Name="QuoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceCatalogs_ServiceCatalogs">
+          <End Role="ServiceCatalogs" Type="Self.ServiceCatalogs" Multiplicity="0..1" />
+          <End Role="ServiceCatalogs1" Type="Self.ServiceCatalogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCatalogs">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Principal>
+            <Dependent Role="ServiceCatalogs1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_ServiceCatalogs">
+          <End Role="ServiceCatalogs" Type="Self.ServiceCatalogs" Multiplicity="0..1" />
+          <End Role="Services" Type="Self.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCatalogs">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FindaSVDataEntitiesStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderServices" EntityType="Self.ProviderServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteMessages" EntityType="Self.QuoteMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteResponses" EntityType="Self.QuoteResponses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quotes" EntityType="Self.Quotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuoteUploads" EntityType="Self.QuoteUploads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceCatalogs" EntityType="Self.ServiceCatalogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Orders" Association="Self.FK_Jobs_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Schedules" Association="Self.FK_Jobs_Schedules">
+            <End Role="Schedules" EntitySet="Schedules" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Providers" Association="Self.FK_Orders_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_QuoteResponses" Association="Self.FK_Orders_QuoteResponses">
+            <End Role="QuoteResponses" EntitySet="QuoteResponses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Providers_Users" Association="Self.FK_Providers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Providers" EntitySet="Providers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteMessages_Customers" Association="Self.FK_QuoteMessages_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="QuoteMessages" EntitySet="QuoteMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteMessages_Providers" Association="Self.FK_QuoteMessages_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="QuoteMessages" EntitySet="QuoteMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteResponses_Providers" Association="Self.FK_QuoteResponses_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="QuoteResponses" EntitySet="QuoteResponses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteResponses_Quotes" Association="Self.FK_QuoteResponses_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteResponses" EntitySet="QuoteResponses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Customers" Association="Self.FK_Quotes_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Services" Association="Self.FK_Quotes_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Quotes" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteUploads_Quotes" Association="Self.FK_QuoteUploads_Quotes">
+            <End Role="Quotes" EntitySet="Quotes" />
+            <End Role="QuoteUploads" EntitySet="QuoteUploads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceCatalogs_ServiceCatalogs" Association="Self.FK_ServiceCatalogs_ServiceCatalogs">
+            <End Role="ServiceCatalogs" EntitySet="ServiceCatalogs" />
+            <End Role="ServiceCatalogs1" EntitySet="ServiceCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_ServiceCatalogs" Association="Self.FK_Services_ServiceCatalogs">
+            <End Role="ServiceCatalogs" EntitySet="ServiceCatalogs" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FindaSVSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FindaSV.Data.Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -39,29 +475,686 @@
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customers" Relationship="FindaSV.Data.Entities.FK_Customers_Users" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Providers" Relationship="FindaSV.Data.Entities.FK_Providers_Users" FromRole="User" ToRole="Provider" />
         </EntityType>
-        <EntityContainer Name="FindaSVSEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FindaSVSEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Customers" EntityType="FindaSV.Data.Entities.Customer" />
+          <EntitySet Name="Jobs" EntityType="FindaSV.Data.Entities.Job" />
+          <EntitySet Name="Messages" EntityType="FindaSV.Data.Entities.Message" />
+          <EntitySet Name="Orders" EntityType="FindaSV.Data.Entities.Order" />
+          <EntitySet Name="Providers" EntityType="FindaSV.Data.Entities.Provider" />
+          <EntitySet Name="ProviderServices" EntityType="FindaSV.Data.Entities.ProviderService" />
+          <EntitySet Name="QuoteMessages" EntityType="FindaSV.Data.Entities.QuoteMessage" />
+          <EntitySet Name="QuoteResponses" EntityType="FindaSV.Data.Entities.QuoteRespons" />
+          <EntitySet Name="Quotes" EntityType="FindaSV.Data.Entities.Quote" />
+          <EntitySet Name="QuoteUploads" EntityType="FindaSV.Data.Entities.QuoteUpload" />
+          <EntitySet Name="Schedules" EntityType="FindaSV.Data.Entities.Schedule" />
+          <EntitySet Name="ServiceCatalogs" EntityType="FindaSV.Data.Entities.ServiceCatalog" />
+          <EntitySet Name="Services" EntityType="FindaSV.Data.Entities.Service" />
+          <AssociationSet Name="FK_Customers_Users" Association="FindaSV.Data.Entities.FK_Customers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="FindaSV.Data.Entities.FK_Orders_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteMessages_Customers" Association="FindaSV.Data.Entities.FK_QuoteMessages_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="QuoteMessage" EntitySet="QuoteMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Customers" Association="FindaSV.Data.Entities.FK_Quotes_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Orders" Association="FindaSV.Data.Entities.FK_Jobs_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Schedules" Association="FindaSV.Data.Entities.FK_Jobs_Schedules">
+            <End Role="Schedule" EntitySet="Schedules" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Providers" Association="FindaSV.Data.Entities.FK_Orders_Providers">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_QuoteResponses" Association="FindaSV.Data.Entities.FK_Orders_QuoteResponses">
+            <End Role="QuoteRespons" EntitySet="QuoteResponses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Providers_Users" Association="FindaSV.Data.Entities.FK_Providers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Provider" EntitySet="Providers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteMessages_Providers" Association="FindaSV.Data.Entities.FK_QuoteMessages_Providers">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="QuoteMessage" EntitySet="QuoteMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteResponses_Providers" Association="FindaSV.Data.Entities.FK_QuoteResponses_Providers">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="QuoteRespons" EntitySet="QuoteResponses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteResponses_Quotes" Association="FindaSV.Data.Entities.FK_QuoteResponses_Quotes">
+            <End Role="Quote" EntitySet="Quotes" />
+            <End Role="QuoteRespons" EntitySet="QuoteResponses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Services" Association="FindaSV.Data.Entities.FK_Quotes_Services">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuoteUploads_Quotes" Association="FindaSV.Data.Entities.FK_QuoteUploads_Quotes">
+            <End Role="Quote" EntitySet="Quotes" />
+            <End Role="QuoteUpload" EntitySet="QuoteUploads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceCatalogs_ServiceCatalogs" Association="FindaSV.Data.Entities.FK_ServiceCatalogs_ServiceCatalogs">
+            <End Role="ServiceCatalog" EntitySet="ServiceCatalogs" />
+            <End Role="ServiceCatalog1" EntitySet="ServiceCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Services_ServiceCatalogs" Association="FindaSV.Data.Entities.FK_Services_ServiceCatalogs">
+            <End Role="ServiceCatalog" EntitySet="ServiceCatalogs" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FindaSV.Data.Entities.FK_Customers_Users" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="Orders" Relationship="FindaSV.Data.Entities.FK_Orders_Customers" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="QuoteMessages" Relationship="FindaSV.Data.Entities.FK_QuoteMessages_Customers" FromRole="Customer" ToRole="QuoteMessage" />
+          <NavigationProperty Name="Quotes" Relationship="FindaSV.Data.Entities.FK_Quotes_Customers" FromRole="Customer" ToRole="Quote" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="IsReviewed" Type="Boolean" Nullable="false" />
+          <Property Name="IsFixedRate" Type="Boolean" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="Boolean" Nullable="false" />
+          <Property Name="ActualRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ActualHours" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PartsRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="FindaSV.Data.Entities.FK_Jobs_Orders" FromRole="Job" ToRole="Order" />
+          <NavigationProperty Name="Schedule" Relationship="FindaSV.Data.Entities.FK_Jobs_Schedules" FromRole="Job" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="MessageContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteResponseId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="IsFixedRate" Type="Boolean" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="Boolean" Nullable="false" />
+          <Property Name="EstimatedRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EstimatedHours" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ScheduleDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FindaSV.Data.Entities.FK_Orders_Customers" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Jobs" Relationship="FindaSV.Data.Entities.FK_Jobs_Orders" FromRole="Order" ToRole="Job" />
+          <NavigationProperty Name="Provider" Relationship="FindaSV.Data.Entities.FK_Orders_Providers" FromRole="Order" ToRole="Provider" />
+          <NavigationProperty Name="QuoteRespons" Relationship="FindaSV.Data.Entities.FK_Orders_QuoteResponses" FromRole="Order" ToRole="QuoteRespons" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OfficePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="FindaSV.Data.Entities.FK_Orders_Providers" FromRole="Provider" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="FindaSV.Data.Entities.FK_Providers_Users" FromRole="Provider" ToRole="User" />
+          <NavigationProperty Name="QuoteMessages" Relationship="FindaSV.Data.Entities.FK_QuoteMessages_Providers" FromRole="Provider" ToRole="QuoteMessage" />
+          <NavigationProperty Name="QuoteResponses" Relationship="FindaSV.Data.Entities.FK_QuoteResponses_Providers" FromRole="Provider" ToRole="QuoteRespons" />
+        </EntityType>
+        <EntityType Name="ProviderService">
+          <Key>
+            <PropertyRef Name="ProviderServiceId" />
+          </Key>
+          <Property Name="ProviderServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="IsFixedRate" Type="Boolean" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="Boolean" Nullable="false" />
+          <Property Name="IsPartsNeeded" Type="Boolean" Nullable="false" />
+          <Property Name="IsHomeVisitAllowed" Type="Boolean" Nullable="false" />
+          <Property Name="FixedRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HomeVisitRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuoteMessage">
+          <Key>
+            <PropertyRef Name="QuoteMessageId" />
+          </Key>
+          <Property Name="QuoteMessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="IsInbound" Type="Boolean" />
+          <Property Name="MessageContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="FindaSV.Data.Entities.FK_QuoteMessages_Customers" FromRole="QuoteMessage" ToRole="Customer" />
+          <NavigationProperty Name="Provider" Relationship="FindaSV.Data.Entities.FK_QuoteMessages_Providers" FromRole="QuoteMessage" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="QuoteRespons">
+          <Key>
+            <PropertyRef Name="QuoteResponseId" />
+          </Key>
+          <Property Name="QuoteResponseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="IsFixedRate" Type="Boolean" Nullable="false" />
+          <Property Name="IsHourlyRate" Type="Boolean" Nullable="false" />
+          <Property Name="FixedRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HourlyRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EstimatedRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EstimatedHours" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ResponseDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Decription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="FindaSV.Data.Entities.FK_Orders_QuoteResponses" FromRole="QuoteRespons" ToRole="Order" />
+          <NavigationProperty Name="Provider" Relationship="FindaSV.Data.Entities.FK_QuoteResponses_Providers" FromRole="QuoteRespons" ToRole="Provider" />
+          <NavigationProperty Name="Quote" Relationship="FindaSV.Data.Entities.FK_QuoteResponses_Quotes" FromRole="QuoteRespons" ToRole="Quote" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="QuoteId" />
+          </Key>
+          <Property Name="QuoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="QuoteDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="FindaSV.Data.Entities.FK_Quotes_Customers" FromRole="Quote" ToRole="Customer" />
+          <NavigationProperty Name="QuoteResponses" Relationship="FindaSV.Data.Entities.FK_QuoteResponses_Quotes" FromRole="Quote" ToRole="QuoteRespons" />
+          <NavigationProperty Name="Service" Relationship="FindaSV.Data.Entities.FK_Quotes_Services" FromRole="Quote" ToRole="Service" />
+          <NavigationProperty Name="QuoteUploads" Relationship="FindaSV.Data.Entities.FK_QuoteUploads_Quotes" FromRole="Quote" ToRole="QuoteUpload" />
+        </EntityType>
+        <EntityType Name="QuoteUpload">
+          <Key>
+            <PropertyRef Name="QuoteUploadId" />
+          </Key>
+          <Property Name="QuoteUploadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteId" Type="Int32" Nullable="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Decription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Quote" Relationship="FindaSV.Data.Entities.FK_QuoteUploads_Quotes" FromRole="QuoteUpload" ToRole="Quote" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Jobs" Relationship="FindaSV.Data.Entities.FK_Jobs_Schedules" FromRole="Schedule" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="ServiceCatalog">
+          <Key>
+            <PropertyRef Name="ServiceCatalogId" />
+          </Key>
+          <Property Name="ServiceCatalogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceCatalogs1" Relationship="FindaSV.Data.Entities.FK_ServiceCatalogs_ServiceCatalogs" FromRole="ServiceCatalog" ToRole="ServiceCatalog1" />
+          <NavigationProperty Name="ServiceCatalog1" Relationship="FindaSV.Data.Entities.FK_ServiceCatalogs_ServiceCatalogs" FromRole="ServiceCatalog1" ToRole="ServiceCatalog" />
+          <NavigationProperty Name="Services" Relationship="FindaSV.Data.Entities.FK_Services_ServiceCatalogs" FromRole="ServiceCatalog" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCatalogId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Quotes" Relationship="FindaSV.Data.Entities.FK_Quotes_Services" FromRole="Service" ToRole="Quote" />
+          <NavigationProperty Name="ServiceCatalog" Relationship="FindaSV.Data.Entities.FK_Services_ServiceCatalogs" FromRole="Service" ToRole="ServiceCatalog" />
+        </EntityType>
+        <Association Name="FK_Customers_Users">
+          <End Type="FindaSV.Data.Entities.User" Role="User" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Type="FindaSV.Data.Entities.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteMessages_Customers">
+          <End Type="FindaSV.Data.Entities.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="FindaSV.Data.Entities.QuoteMessage" Role="QuoteMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="QuoteMessage">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Customers">
+          <End Type="FindaSV.Data.Entities.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Quote" Role="Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Quote">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Orders">
+          <End Type="FindaSV.Data.Entities.Order" Role="Order" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Schedules">
+          <End Type="FindaSV.Data.Entities.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Providers">
+          <End Type="FindaSV.Data.Entities.Provider" Role="Provider" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_QuoteResponses">
+          <End Type="FindaSV.Data.Entities.QuoteRespons" Role="QuoteRespons" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuoteRespons">
+              <PropertyRef Name="QuoteResponseId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="QuoteResponseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Providers_Users">
+          <End Type="FindaSV.Data.Entities.User" Role="User" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Provider" Role="Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteMessages_Providers">
+          <End Type="FindaSV.Data.Entities.Provider" Role="Provider" Multiplicity="0..1" />
+          <End Type="FindaSV.Data.Entities.QuoteMessage" Role="QuoteMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="QuoteMessage">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteResponses_Providers">
+          <End Type="FindaSV.Data.Entities.Provider" Role="Provider" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.QuoteRespons" Role="QuoteRespons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="QuoteRespons">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteResponses_Quotes">
+          <End Type="FindaSV.Data.Entities.Quote" Role="Quote" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.QuoteRespons" Role="QuoteRespons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quote">
+              <PropertyRef Name="QuoteId" />
+            </Principal>
+            <Dependent Role="QuoteRespons">
+              <PropertyRef Name="QuoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Services">
+          <End Type="FindaSV.Data.Entities.Service" Role="Service" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.Quote" Role="Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Quote">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuoteUploads_Quotes">
+          <End Type="FindaSV.Data.Entities.Quote" Role="Quote" Multiplicity="1" />
+          <End Type="FindaSV.Data.Entities.QuoteUpload" Role="QuoteUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quote">
+              <PropertyRef Name="QuoteId" />
+            </Principal>
+            <Dependent Role="QuoteUpload">
+              <PropertyRef Name="QuoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceCatalogs_ServiceCatalogs">
+          <End Type="FindaSV.Data.Entities.ServiceCatalog" Role="ServiceCatalog" Multiplicity="0..1" />
+          <End Type="FindaSV.Data.Entities.ServiceCatalog" Role="ServiceCatalog1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCatalog">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Principal>
+            <Dependent Role="ServiceCatalog1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Services_ServiceCatalogs">
+          <End Type="FindaSV.Data.Entities.ServiceCatalog" Role="ServiceCatalog" Multiplicity="0..1" />
+          <End Type="FindaSV.Data.Entities.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCatalog">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceCatalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FindaSVSModelStoreContainer" CdmEntityContainer="FindaSVSEntities">
+        <EntityContainerMapping StorageEntityContainer="FindaSVDataEntitiesStoreContainer" CdmEntityContainer="FindaSVSEntities1">
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="FindaSVSModel.User">
-              <MappingFragment StoreEntitySet="User">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="RegisterDateTime" ColumnName="RegisterDateTime" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Customer">
+              <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="HomePhoneNumber" ColumnName="HomePhoneNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompletedDateTime" ColumnName="CompletedDateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PartsRate" ColumnName="PartsRate" />
+                <ScalarProperty Name="ActualHours" ColumnName="ActualHours" />
+                <ScalarProperty Name="ActualRate" ColumnName="ActualRate" />
+                <ScalarProperty Name="IsHourlyRate" ColumnName="IsHourlyRate" />
+                <ScalarProperty Name="IsFixedRate" ColumnName="IsFixedRate" />
+                <ScalarProperty Name="IsReviewed" ColumnName="IsReviewed" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EstimatedHours" ColumnName="EstimatedHours" />
+                <ScalarProperty Name="EstimatedRate" ColumnName="EstimatedRate" />
+                <ScalarProperty Name="IsHourlyRate" ColumnName="IsHourlyRate" />
+                <ScalarProperty Name="IsFixedRate" ColumnName="IsFixedRate" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QuoteResponseId" ColumnName="QuoteResponseId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Provider">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CellPhoneNumber" ColumnName="CellPhoneNumber" />
+                <ScalarProperty Name="OfficePhoneNumber" ColumnName="OfficePhoneNumber" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderServices">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.ProviderService">
+              <MappingFragment StoreEntitySet="ProviderServices">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HomeVisitRate" ColumnName="HomeVisitRate" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="FixedRate" ColumnName="FixedRate" />
+                <ScalarProperty Name="IsHomeVisitAllowed" ColumnName="IsHomeVisitAllowed" />
+                <ScalarProperty Name="IsPartsNeeded" ColumnName="IsPartsNeeded" />
+                <ScalarProperty Name="IsHourlyRate" ColumnName="IsHourlyRate" />
+                <ScalarProperty Name="IsFixedRate" ColumnName="IsFixedRate" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ProviderServiceId" ColumnName="ProviderServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteMessages">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.QuoteMessage">
+              <MappingFragment StoreEntitySet="QuoteMessages">
+                <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="IsInbound" ColumnName="IsInbound" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QuoteMessageId" ColumnName="QuoteMessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteResponses">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.QuoteRespons">
+              <MappingFragment StoreEntitySet="QuoteResponses">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="ResponseDateTime" ColumnName="ResponseDateTime" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="EstimatedHours" ColumnName="EstimatedHours" />
+                <ScalarProperty Name="EstimatedRate" ColumnName="EstimatedRate" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="FixedRate" ColumnName="FixedRate" />
+                <ScalarProperty Name="IsHourlyRate" ColumnName="IsHourlyRate" />
+                <ScalarProperty Name="IsFixedRate" ColumnName="IsFixedRate" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="QuoteId" ColumnName="QuoteId" />
+                <ScalarProperty Name="QuoteResponseId" ColumnName="QuoteResponseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotes">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Quote">
+              <MappingFragment StoreEntitySet="Quotes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuoteDateTime" ColumnName="QuoteDateTime" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QuoteId" ColumnName="QuoteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteUploads">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.QuoteUpload">
+              <MappingFragment StoreEntitySet="QuoteUploads">
+                <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="QuoteId" ColumnName="QuoteId" />
+                <ScalarProperty Name="QuoteUploadId" ColumnName="QuoteUploadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Schedule">
+              <MappingFragment StoreEntitySet="Schedules">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceCatalogs">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.ServiceCatalog">
+              <MappingFragment StoreEntitySet="ServiceCatalogs">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ServiceCatalogId" ColumnName="ServiceCatalogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="FindaSV.Data.Entities.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServiceCatalogId" ColumnName="ServiceCatalogId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
