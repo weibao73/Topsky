@@ -13,13 +13,7 @@ namespace FindaSVS.Data.Entities
     using System.Collections.Generic;
     
     public class User
-    {
-        public User()
-        {
-            this.Customers = new HashSet<Customer>();
-            this.Providers = new HashSet<Provider>();
-        }
-    
+    {  
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -32,7 +26,7 @@ namespace FindaSVS.Data.Entities
         public string Country { get; set; }
         public Nullable<System.DateTime> RegisterDateTime { get; set; }
     
-        public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<Provider> Providers { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Provider Provider { get; set; }
     }
 }

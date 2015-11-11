@@ -21,7 +21,7 @@ namespace FindaSVS.DataAccess.EntityFramework.Configurations
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.HasRequired(c => c.User)
-                .WithRequiredPrincipal();
+                .WithOptional(u => u.Customer);
         }
     }
 }
