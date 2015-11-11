@@ -16,9 +16,10 @@ namespace FindaSVS.Data.EntityDataModel
     {
         public Customer()
         {
+            this.QuoteRequestMessages = new HashSet<QuoteRequestMessage>();
+            this.QuoteRequests = new HashSet<QuoteRequest>();
             this.Orders = new HashSet<Order>();
-            this.QuoteMessages = new HashSet<QuoteMessage>();
-            this.Quotes = new HashSet<Quote>();
+            this.Messages = new HashSet<Message>();
         }
     
         public int CustomerId { get; set; }
@@ -34,8 +35,9 @@ namespace FindaSVS.Data.EntityDataModel
         public string PostalCode { get; set; }
     
         public virtual User User { get; set; }
+        public virtual ICollection<QuoteRequestMessage> QuoteRequestMessages { get; set; }
+        public virtual ICollection<QuoteRequest> QuoteRequests { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<QuoteMessage> QuoteMessages { get; set; }
-        public virtual ICollection<Quote> Quotes { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

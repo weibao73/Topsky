@@ -27,7 +27,7 @@ namespace FindaSVS.Data.EntityDataModel
         public System.DateTime CompletedDateTime { get; set; }
         public byte Status { get; set; }
     
-        public virtual Order Order { get; set; }
         public virtual Schedule Schedule { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

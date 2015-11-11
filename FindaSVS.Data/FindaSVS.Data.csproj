@@ -49,9 +49,9 @@
     <Compile Include="Entities\ProviderService.cs" />
     <Compile Include="Entities\ProvinceState.cs" />
     <Compile Include="Entities\Quote.cs" />
-    <Compile Include="Entities\QuoteMessage.cs" />
-    <Compile Include="Entities\QuoteResponse.cs" />
-    <Compile Include="Entities\QuoteUpload.cs" />
+    <Compile Include="Entities\QuoteRequest.cs" />
+    <Compile Include="Entities\QuoteRequestMessage.cs" />
+    <Compile Include="Entities\QuoteRequestUpload.cs" />
     <Compile Include="Entities\Schedule.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\ServiceCatalog.cs" />

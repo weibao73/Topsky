@@ -7,6 +7,9 @@
     [StartDateTime] DATETIME       NOT NULL,
     [EndDateTime]   DATETIME       NOT NULL,
     [Status]        TINYINT        NOT NULL,
-    CONSTRAINT [PK_Schedules] PRIMARY KEY CLUSTERED ([ScheduleId] ASC)
+    CONSTRAINT [PK_Schedules] PRIMARY KEY CLUSTERED ([ScheduleId] ASC),
+    CONSTRAINT [FK_Schedules_Providers] FOREIGN KEY ([ProviderId]) REFERENCES [dbo].[Providers] ([ProviderId])
 );
+
+
 

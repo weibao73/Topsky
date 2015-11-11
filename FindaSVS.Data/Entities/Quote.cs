@@ -7,20 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.EntityDataModel
+namespace FindaSVS.Data.Entities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class QuoteRespons
+    public class Quote
     {
-        public QuoteRespons()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
-        public int QuoteResponseId { get; set; }
         public int QuoteId { get; set; }
+        public int QuoteRequestId { get; set; }
         public int ProviderId { get; set; }
         public bool IsFixedRate { get; set; }
         public bool IsHourlyRate { get; set; }
@@ -33,8 +28,8 @@ namespace FindaSVS.Data.EntityDataModel
         public string Decription { get; set; }
         public byte Status { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual Provider Provider { get; set; }
-        public virtual Quote Quote { get; set; }
+        public virtual QuoteRequest QuoteRequest { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

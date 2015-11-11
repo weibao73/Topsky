@@ -7,28 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.EntityDataModel
+namespace FindaSVS.Data.Entities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Message
+    public class Message
     {
         public Message()
         {
-            this.Messages1 = new HashSet<Message>();
+            this.ReplyMessages = new HashSet<Message>();
         }
-    
+
         public int MessageId { get; set; }
         public Nullable<int> ParentId { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> ProviderId { get; set; }
         public string MessageContent { get; set; }
         public Nullable<System.DateTime> MessageDateTime { get; set; }
-    
+
         public virtual Customer Customer { get; set; }
-        public virtual ICollection<Message> Messages1 { get; set; }
-        public virtual Message Message1 { get; set; }
+        public virtual ICollection<Message> ReplyMessages { get; set; }
+        public virtual Message ParentMessage { get; set; }
         public virtual Provider Provider { get; set; }
     }
 }

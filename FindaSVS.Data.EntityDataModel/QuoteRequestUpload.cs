@@ -12,16 +12,14 @@ namespace FindaSVS.Data.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class QuoteMessage
+    public partial class QuoteRequestUpload
     {
-        public int QuoteMessageId { get; set; }
-        public Nullable<int> CustomerId { get; set; }
-        public Nullable<int> ProviderId { get; set; }
-        public Nullable<bool> IsInbound { get; set; }
-        public string MessageContent { get; set; }
-        public Nullable<System.DateTime> MessageDateTime { get; set; }
+        public int QuoteRequestUploadId { get; set; }
+        public int QuoteRequestId { get; set; }
+        public string FilePath { get; set; }
+        public string Decription { get; set; }
+        public System.DateTime UploadDateTime { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Provider Provider { get; set; }
+        public virtual QuoteRequest QuoteRequest { get; set; }
     }
 }

@@ -12,21 +12,18 @@ namespace FindaSVS.Data.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ProviderService
+    public partial class QuoteRequestMessage
     {
-        public int ProviderServiceId { get; set; }
-        public int ServiceId { get; set; }
+        public int QuoteRequestMessageId { get; set; }
+        public int QuoteQuestId { get; set; }
+        public int CustomerId { get; set; }
         public int ProviderId { get; set; }
-        public bool IsFixedRate { get; set; }
-        public bool IsHourlyRate { get; set; }
-        public bool IsPartsNeeded { get; set; }
-        public bool IsHomeVisitAllowed { get; set; }
-        public Nullable<decimal> FixedRate { get; set; }
-        public Nullable<decimal> HourlyRate { get; set; }
-        public Nullable<decimal> HomeVisitRate { get; set; }
-        public string Description { get; set; }
+        public bool IsInbound { get; set; }
+        public string MessageContent { get; set; }
+        public System.DateTime MessageDateTime { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual Provider Provider { get; set; }
-        public virtual Service Service { get; set; }
+        public virtual QuoteRequest QuoteRequest { get; set; }
     }
 }

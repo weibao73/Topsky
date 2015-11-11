@@ -94,13 +94,13 @@
     <Compile Include="Quote.cs">
       <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuoteMessage.cs">
+    <Compile Include="QuoteRequest.cs">
       <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuoteRespons.cs">
+    <Compile Include="QuoteRequestMessage.cs">
       <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="QuoteUpload.cs">
+    <Compile Include="QuoteRequestUpload.cs">
       <DependentUpon>FindaSVSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Schedule.cs">

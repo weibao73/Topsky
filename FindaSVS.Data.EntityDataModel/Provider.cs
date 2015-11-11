@@ -16,9 +16,12 @@ namespace FindaSVS.Data.EntityDataModel
     {
         public Provider()
         {
+            this.ProviderServices = new HashSet<ProviderService>();
+            this.QuoteRequestMessages = new HashSet<QuoteRequestMessage>();
+            this.Quotes = new HashSet<Quote>();
             this.Orders = new HashSet<Order>();
-            this.QuoteMessages = new HashSet<QuoteMessage>();
-            this.QuoteResponses = new HashSet<QuoteRespons>();
+            this.Messages = new HashSet<Message>();
+            this.Schedules = new HashSet<Schedule>();
         }
     
         public int ProviderId { get; set; }
@@ -32,9 +35,12 @@ namespace FindaSVS.Data.EntityDataModel
         public string Country { get; set; }
         public string PostalCode { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<QuoteMessage> QuoteMessages { get; set; }
-        public virtual ICollection<QuoteRespons> QuoteResponses { get; set; }
+        public virtual ICollection<ProviderService> ProviderServices { get; set; }
+        public virtual ICollection<QuoteRequestMessage> QuoteRequestMessages { get; set; }
+        public virtual ICollection<Quote> Quotes { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace FindaSVS.Data.EntityDataModel
         }
     
         public int OrderId { get; set; }
-        public int QuoteResponseId { get; set; }
+        public int QuoteId { get; set; }
         public int CustomerId { get; set; }
         public int ProviderId { get; set; }
         public bool IsFixedRate { get; set; }
@@ -35,6 +35,6 @@ namespace FindaSVS.Data.EntityDataModel
         public virtual Customer Customer { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
         public virtual Provider Provider { get; set; }
-        public virtual QuoteRespons QuoteRespons { get; set; }
+        public virtual Quote Quote { get; set; }
     }
 }

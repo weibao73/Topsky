@@ -12,7 +12,7 @@ namespace FindaSVS.Data.Entities
     using System;
     using System.Collections.Generic;
     
-    public class ProvinceState
+    public partial class ProvinceState
     {
         public ProvinceState()
         {

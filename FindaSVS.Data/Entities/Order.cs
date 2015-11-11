@@ -12,28 +12,28 @@ namespace FindaSVS.Data.Entities
     using System;
     using System.Collections.Generic;
     
-    public class QuoteResponse
+    public class Order
     {
-        public QuoteResponse()
+        public Order()
         {
-            this.Orders = new HashSet<Order>();
+            this.Jobs = new HashSet<Job>();
         }
     
-        public int QuoteResponseId { get; set; }
+        public int OrderId { get; set; }
         public int QuoteId { get; set; }
+        public int CustomerId { get; set; }
         public int ProviderId { get; set; }
         public bool IsFixedRate { get; set; }
         public bool IsHourlyRate { get; set; }
-        public Nullable<decimal> FixedRate { get; set; }
-        public Nullable<decimal> HourlyRate { get; set; }
-        public Nullable<decimal> EstimatedRate { get; set; }
-        public Nullable<decimal> EstimatedHours { get; set; }
-        public System.DateTime RequestDateTime { get; set; }
-        public Nullable<System.DateTime> ResponseDateTime { get; set; }
-        public string Decription { get; set; }
+        public decimal EstimatedRate { get; set; }
+        public decimal EstimatedHours { get; set; }
+        public string Description { get; set; }
+        public System.DateTime OrderDateTime { get; set; }
+        public System.DateTime ScheduleDateTime { get; set; }
         public byte Status { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
         public virtual Provider Provider { get; set; }
         public virtual Quote Quote { get; set; }
     }

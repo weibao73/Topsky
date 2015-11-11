@@ -7,28 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FindaSVS.Data.EntityDataModel
+namespace FindaSVS.Data.Entities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Schedule
+    public class QuoteRequestMessage
     {
-        public Schedule()
-        {
-            this.Jobs = new HashSet<Job>();
-        }
-    
-        public int ScheduleId { get; set; }
+        public int QuoteRequestMessageId { get; set; }
+        public int QuoteQuestId { get; set; }
+        public int CustomerId { get; set; }
         public int ProviderId { get; set; }
-        public int JobId { get; set; }
-        public string Title { get; set; }
-        public string Location { get; set; }
-        public System.DateTime StartDateTime { get; set; }
-        public System.DateTime EndDateTime { get; set; }
-        public byte Status { get; set; }
+        public bool IsInbound { get; set; }
+        public string MessageContent { get; set; }
+        public System.DateTime MessageDateTime { get; set; }
     
-        public virtual ICollection<Job> Jobs { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual Provider Provider { get; set; }
+        public virtual QuoteRequest QuoteRequest { get; set; }
     }
 }

@@ -10,22 +10,25 @@ using FindaSVS.Data.Entities;
 
 namespace FindaSVS.DataAccess.EntityFramework.Configurations
 {
-    internal class QuoteMessageConfiguration : EntityTypeConfiguration<QuoteMessage>
+    internal class MessageConfiguration : EntityTypeConfiguration<Message>
     {
-        internal QuoteMessageConfiguration()
+        internal MessageConfiguration()
             : base()
         {
-            this.ToTable("QuoteMessages");
-            this.HasKey(c => c.QuoteMessageId);
-            this.Property(c => c.QuoteMessageId)
+            this.ToTable("Messages");
+            this.HasKey(c => c.MessageId);
+            this.Property(c => c.MessageId)
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.HasOptional(c => c.ParentMessage)
+                .WithMany(c => c.ReplyMessages)
+                .HasForeignKey(c => c.ParentId);
             this.HasRequired(c => c.Customer)
-                .WithMany(s => s.QuoteMessages)
+                .WithMany(c => c.Messages)
                 .HasForeignKey(c => c.CustomerId);
             this.HasRequired(c => c.Provider)
-                .WithMany(s => s.QuoteMessages)
+                .WithMany(c => c.Messages)
                 .HasForeignKey(c => c.ProviderId);
-        }
+       }
     }
 }

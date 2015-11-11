@@ -20,12 +20,12 @@ namespace FindaSVS.DataAccess.EntityFramework.Configurations
             this.Property(c => c.QuoteId)
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            this.HasRequired(c => c.Customer)
+            this.HasRequired(c => c.QuoteRequest)
                 .WithMany(s => s.Quotes)
-                .HasForeignKey(c => c.CustomerId);
-            this.HasRequired(c => c.Service)
+                .HasForeignKey(c => c.QuoteRequestId);
+            this.HasRequired(c => c.Provider)
                 .WithMany(s => s.Quotes)
-                .HasForeignKey(c => c.ServiceId);
+                .HasForeignKey(c => c.ProviderId);
         }
     }
 }

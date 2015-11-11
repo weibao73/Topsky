@@ -10,19 +10,19 @@ using FindaSVS.Data.Entities;
 
 namespace FindaSVS.DataAccess.EntityFramework.Configurations
 {
-    internal class QuoteUploadConfiguration : EntityTypeConfiguration<QuoteUpload>
+    internal class ScheduleConfiguration :  EntityTypeConfiguration<Schedule>
     {
-        internal QuoteUploadConfiguration()
+        internal ScheduleConfiguration()
             : base()
         {
-            this.ToTable("QuoteUploads");
-            this.HasKey(c => c.QuoteUploadId);
-            this.Property(c => c.QuoteUploadId)
+            this.ToTable("Schedules");
+            this.HasKey(u => u.ScheduleId);
+            this.Property(u => u.ScheduleId)
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            this.HasRequired(c => c.Quote)
-                .WithMany(s => s.QuoteUploads)
-                .HasForeignKey(c => c.QuoteId);
+            this.HasRequired(s => s.Provider)
+                .WithMany(p => p.Schedules)
+                .HasForeignKey(s => s.ProviderId);
         }
     }
 }

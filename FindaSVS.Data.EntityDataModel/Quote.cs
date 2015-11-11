@@ -16,20 +16,25 @@ namespace FindaSVS.Data.EntityDataModel
     {
         public Quote()
         {
-            this.QuoteResponses = new HashSet<QuoteRespons>();
-            this.QuoteUploads = new HashSet<QuoteUpload>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int QuoteId { get; set; }
-        public int CustomerId { get; set; }
-        public int ServiceId { get; set; }
-        public System.DateTime QuoteDateTime { get; set; }
+        public int QuoteRequestId { get; set; }
+        public int ProviderId { get; set; }
+        public bool IsFixedRate { get; set; }
+        public bool IsHourlyRate { get; set; }
+        public Nullable<decimal> FixedRate { get; set; }
+        public Nullable<decimal> HourlyRate { get; set; }
+        public Nullable<decimal> EstimatedRate { get; set; }
+        public Nullable<decimal> EstimatedHours { get; set; }
+        public System.DateTime RequestDateTime { get; set; }
+        public Nullable<System.DateTime> ResponseDateTime { get; set; }
+        public string Decription { get; set; }
         public byte Status { get; set; }
-        public string Description { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<QuoteRespons> QuoteResponses { get; set; }
-        public virtual Service Service { get; set; }
-        public virtual ICollection<QuoteUpload> QuoteUploads { get; set; }
+        public virtual Provider Provider { get; set; }
+        public virtual QuoteRequest QuoteRequest { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

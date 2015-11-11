@@ -27,6 +27,17 @@ namespace FindaSVS.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new CustomerConfiguration());
             modelBuilder.Configurations.Add(new ProviderConfiguration());
+            modelBuilder.Configurations.Add(new JobConfiguration());
+            modelBuilder.Configurations.Add(new MessageConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
+            modelBuilder.Configurations.Add(new ProviderServiceConfiguration());
+            modelBuilder.Configurations.Add(new QuoteConfiguration());
+            modelBuilder.Configurations.Add(new QuoteRequestConfiguration());
+            modelBuilder.Configurations.Add(new QuoteRequestMessageConfiguration());
+            modelBuilder.Configurations.Add(new QuoteRequestUploadConfiguration());
+            modelBuilder.Configurations.Add(new ScheduleConfiguration());
+            modelBuilder.Configurations.Add(new ServiceCatalogConfiguration());
+            modelBuilder.Configurations.Add(new ServiceConfiguration());
         }
     }
 }

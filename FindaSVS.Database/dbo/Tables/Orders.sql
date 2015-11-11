@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Orders] (
     [OrderId]          INT             IDENTITY (1, 1) NOT NULL,
-    [QuoteResponseId]  INT             NOT NULL,
+    [QuoteId]          INT             NOT NULL,
     [CustomerId]       INT             NOT NULL,
     [ProviderId]       INT             NOT NULL,
     [IsFixedRate]      BIT             NOT NULL,
@@ -14,6 +14,8 @@
     CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([OrderId] ASC),
     CONSTRAINT [FK_Orders_Customers] FOREIGN KEY ([CustomerId]) REFERENCES [dbo].[Customers] ([CustomerId]),
     CONSTRAINT [FK_Orders_Providers] FOREIGN KEY ([ProviderId]) REFERENCES [dbo].[Providers] ([ProviderId]),
-    CONSTRAINT [FK_Orders_QuoteResponses] FOREIGN KEY ([QuoteResponseId]) REFERENCES [dbo].[QuoteResponses] ([QuoteResponseId])
+    CONSTRAINT [FK_Orders_Quotes] FOREIGN KEY ([QuoteId]) REFERENCES [dbo].[Quotes] ([QuoteId])
 );
+
+
 

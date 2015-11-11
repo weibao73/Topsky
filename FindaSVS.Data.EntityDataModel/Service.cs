@@ -16,7 +16,8 @@ namespace FindaSVS.Data.EntityDataModel
     {
         public Service()
         {
-            this.Quotes = new HashSet<Quote>();
+            this.ProviderServices = new HashSet<ProviderService>();
+            this.QuoteRequests = new HashSet<QuoteRequest>();
         }
     
         public int ServiceId { get; set; }
@@ -24,7 +25,8 @@ namespace FindaSVS.Data.EntityDataModel
         public string Name { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Quote> Quotes { get; set; }
         public virtual ServiceCatalog ServiceCatalog { get; set; }
+        public virtual ICollection<ProviderService> ProviderServices { get; set; }
+        public virtual ICollection<QuoteRequest> QuoteRequests { get; set; }
     }
 }
